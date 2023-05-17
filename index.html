@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100%;
+        min-height: 100vh;
+        background-color: azure;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    main{
+    width: 280px;
+    height: 410px;
+    padding: 10px 20px;
+    border: none;
+    background-image: linear-gradient(to left bottom,#ffb900, #ff7730);  
+    background-color: #F9f7f6;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 30%);
+}
+
+header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aliceblue;     */
+}
+.input{
+    outline: none;
+    background-image: linear-gradient(to right bottom,#999, #eee);
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border: none;
+    color: #eee;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+}
+
+
+
+td{
+    margin: 5px;
+}
+
+.bn{
+    
+    background-color: #eee;
+    outline: none;
+    width: 55px;
+    height: 55px;
+    margin: 3px;
+    padding: 9px;
+    border: none;
+    color: #777;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 30%);
+}
+
+</style>
+<body onkeyup="keyUp(event)">
+
+
+    <main>
+        <header>
+            <input id="inputId" placeholder="son..."  class="input" type="text" onchange="qiymat(event)">
+        </header>
+        <table>
+            <tbody>
+            <tr>
+                <td><input type="button" class="bn btn-gr btn-1" value="C" onclick="inputId.value=''"></td>
+                <td><input type="button" class="bn btn-gr" value="Su" onclick="back()"></td>
+                <td><input type="button" class="bn btn-gr" value="√" onclick="ildiz()"></td>
+                <td><input type="button" class="bn btn-gr" value="/" onclick="bolimma()"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="bn btn-gr" value="7" onclick="inputId.value += '7'"></td>
+                <td><input type="button" class="bn btn-gr" value="8" onclick="inputId.value += '8'"></td>
+                <td><input type="button" class="bn btn-gr" value="9" onclick="inputId.value += '9'"></td>
+                <td><input type="button" class="bn btn-gr" value="x" onclick="kopaytma()"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="bn btn-gr" value="4" onclick="inputId.value += '4'"></td>
+                <td><input type="button" class="bn btn-gr" value="5" onclick="inputId.value += '5'"></td>
+                <td><input type="button" class="bn btn-gr" value="6" onclick="inputId.value += '6'"></td>
+                <td><input type="button" class="bn btn-gr" value="-" onclick="minus()"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="bn btn-gr" value="1" onclick="inputId.value += '1'"></td>
+                <td><input type="button" class="bn btn-gr" value="2" onclick="inputId.value += '2'"></td>
+                <td><input type="button" class="bn btn-gr" value="3" onclick="inputId.value += '3'"></td>
+                <td rowspan="2"><input style="height: 118px" type="button" class="bn plus btn-gr" value="+" onclick="pilus()"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="bn btn-gr" value="0" onclick="inputId.value += '0'"></td>
+                <td><input type="button" class="bn btn-gr" value="." onclick="nuqta()"></td>
+                <td><input type="button" class="bn btn" value="=" onclick="Teng()"></td>
+            </tr>
+        </tbody></table>
+    </main>
+
+
+    <script>
+
+
+        const inputId = document.getElementById("inputId");
+
+        // nuqtani kiritlish qismi
+
+        const nuqta = () => {
+            if(inputId.value != ""){
+                if(inputId.value.includes("+")){
+                let amal = inputId.value.indexOf("+");
+                let s1 = inputId.value.slice(amal+1);
+                if(s1!=""){
+                    if(!(s1.includes("."))){
+                        inputId.value += '.';
+                    }
+                }
+                }
+
+                if(inputId.value.includes("-")){
+                let amal = inputId.value.indexOf("-");
+                let s1 = inputId.value.slice(amal+1);
+                if(s1!=""){
+                    if(!(s1.includes("."))){
+                        inputId.value += '.';
+                    }
+                }
+                }
+                if(inputId.value.includes("/")){
+                let amal = inputId.value.indexOf("/");
+                let s1 = inputId.value.slice(amal+1);
+                if(s1!=""){
+                    if(!(s1.includes("."))){
+                        inputId.value += '.';
+                    }
+                }
+                }
+                if(inputId.value.includes("*")){
+                let amal = inputId.value.indexOf("*");
+                let s1 = inputId.value.slice(amal+1);
+                if(s1!=""){
+                    if(!(s1.includes("."))){
+                        inputId.value += '.';
+                    }
+                }
+                }
+                else{
+                    if(!(inputId.value.includes("."))){
+                    inputId.value += '.';
+                }
+                }
+            }
+        }
+
+        // izlash qizmi yani input valuesidan harf yoki kiritilishi mumkinmas belgilarni izlash vazifasini bajarib beradi
+      
+        function  Izla  (a)  {
+            try{
+            let s = "`"
+            let bool = `qwertyuiop[]{}asdfghjkl:;"zxcvbnm,|\?'<>!@#$%^&_`;
+            let kBool = bool.toUpperCase();
+            let bool2 = `${bool}${kBool}${s}`;
+                
+            if(a == ""){
+                inputId.value = "";
+                inputId.placeholder = "sonni kiriting";
+                throw new Error("inputga son kiriting");
+            }
+            // a = a.replace(/ /g, "");
+            if(a != ""){
+                for (const qiymat of bool2) {
+                    if(a.includes(qiymat)){
+                    inputId.value = "";
+                    inputId.placeholder = "faqat sondan iborat qiymat kiriting";
+                    throw new Error("inpuga faqat son va amallardan iborat qiymat kiriting");
+                    }
+                   
+                }
+            }
+          
+                HisobKitob(a);
+                   
+        }catch(err){
+            console.log(err.message);
+        }
+    }
+
+        
+        // pilus onclick hodisasi
+        
+      const pilus = () => {
+
+            if(inputId.value==''){
+                inputId.placeholder = "sonn kiritilmagan";
+                throw new Error("Inputga sonni kiriting");
+            }
+           
+            else{
+                inputId.value += '+';
+            }
+      }
+
+    //   kopaytma qismi
+
+      const kopaytma = () => {
+            
+            if(inputId.value==''){
+                inputId.placeholder = "sonn kiritilmagan";
+                throw new Error("Inputga sonni kiriting");
+            }
+           
+            else{
+                inputId.value += '*';
+            }
+        }
+
+    // bolinma qismi
+    
+    const bolimma = () => {
+            
+            if(inputId.value==''){
+                inputId.placeholder = "sonn kiritilmagan";
+                throw new Error("Inputga sonni kiriting");
+            }
+            
+            else{
+                inputId.value += '/'
+            }
+        }
+
+    // ildiz qismi
+
+    const ildiz = () => {
+            
+            if(inputId.value==''){
+                inputId.placeholder = "sonn kiritilmagan";
+                throw new Error("Inputga sonni kiriting");
+            }
+            else{
+                inputId.value += '√';
+                HisobKitob(inputId.value);
+            }
+        }
+
+    // minus qismi
+
+    const minus = () => {
+            
+            if(inputId.value==''){
+                inputId.placeholder = "sonn kiritilmagan";
+                throw new Error("Inputga sonni kiriting");
+            }
+            
+            else{
+                inputId.value += '-'
+            }
+        }
+
+    // teng qismi
+
+    const Teng = () => {
+            
+            if(inputId.value == ""){
+              inputId.placeholder = "sonn kiritilmagan";
+              throw new Error("Inputga sonni kiriting");
+            }
+            else{
+  
+                return Izla(inputId.value);
+            }
+          };
+
+    // back qismi yani bitta ochirish qismi
+
+    const back = () => {
+           inputId.value = inputId.value.slice(0,inputId.value.length-1);
+        }
+
+    // teng kiritilganida teng belgisini olib tashlaydi
+
+    const belgiKes = (str) => {
+        console.log("belgini kes");
+            str = str.slice(0, str.length-1);
+            return Izla(str);
+        }
+
+    //   Hisonb kitob bajarilish jarayoni
+        
+        const HisobKitob = (satr) => {
+            console.log("kirdi");
+            satr = satr.trim();
+            let str = satr.replace(/ /g, "");
+            return inputId.value = eval(satr);
+    
+               
+           
+        }
+
+       
+      
+        // input valuesi
+
+            const qiymat = (e) => {
+                plus = inputId.value;
+                minus_ = inputId.value;
+                kopaytr = inputId.value;
+                bolish = inputId.value;
+                Izla(e.target.value);
+            }
+
+        // qlavyatura qismi
+          let saqla = "";
+          let plus = "";
+          let minus_ = "";
+          let kopaytr = "";
+          let bolish = "";
+          let nuqta_ = "";
+
+          function keyUp(e){
+            try{
+            
+            if(e.key != " "){
+                    saqla = inputId.value;
+                }
+                if(e.key != "+"){
+                    plus = inputId.value;
+                }
+                if(e.key != "."){
+                    nuqta_ = inputId.value;   
+                }
+                if(e.key != "-"){ 
+                    minus_ = inputId.value;
+                }
+                if(e.key != "*"){
+                    kopaytr = inputId.value;
+                }
+                if(e.key != "/"){
+                    bolish = inputId.value;
+                }
+
+                if(e.key == " "){
+                    if(inputId.value == " ") inputId.value = saqla;
+                    else inputId.value = saqla;
+                }
+            if(e.key == "="){
+                if(!(inputId.value.includes('-')||inputId.value.includes('+')||inputId.value.includes('*')||inputId.value.includes('/'))){
+                    inputId.value = inputId.value.slice(0, inputId.value.length-1);
+                }
+                else{
+                    belgiKes(inputId.value);
+                    str.string
+                }
+
+            }
+            if(e.key == "Enter"){
+                if(inputId.value !== "") {
+                    Izla(inputId.value);
+                }
+            }
+            if(e.key == "+"){
+                if(plus == ""){
+                    inputId.value = "";
+                    plus = inputId.value;
+                    minus_=inputId.value;
+                    kopaytr =inputId.value;
+                    bolish =inputId.value;
+                    inputId.placeholder = "sonn kiritilmagan";
+                    throw new Error("Inputga sonni kiriting");
+                }
+              
+            }
+
+            if(e.key == "-"){
+                if(minus_ == ""){
+                    inputId.value = "";
+                    plus = inputId.value;
+                    minus_=inputId.value;
+                    kopaytr =inputId.value;
+                    bolish =inputId.value;
+                    inputId.placeholder = "sonn kiritilmagan";
+                    throw new Error("Inputga sonni kiriting");
+                }
+              
+            }
+
+            if(e.key == "*"){
+                if(kopaytr == ""){
+                    inputId.value = "";
+                    plus = inputId.value;
+                    minus_=inputId.value;
+                    kopaytr =inputId.value;
+                    bolish =inputId.value;
+                    inputId.placeholder = "sonn kiritilmagan";
+                    throw new Error("Inputga sonni kiriting");
+                }
+                
+            }
+
+            if(e.key == "/"){
+                if(bolish == ""){
+                    inputId.value = "";
+                    plus = inputId.value;
+                    minus_=inputId.value;
+                    kopaytr =inputId.value;
+                    bolish =inputId.value;
+                    inputId.placeholder = "sonn kiritilmagan";
+                    throw new Error("Inputga sonni kiriting");
+                }
+                
+            }
+
+            if(e.key == "."){
+                if(inputId.value == ".")
+                inputId.value = nuqta_;
+                inputId.placeholder = "oldin son kiriting"
+                nuqta_ = inputId.value;
+            }
+
+            }catch(err){
+                console.log(err.message);
+
+            }
+            
+            }
+
+       
+
+    </script>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
